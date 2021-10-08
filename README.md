@@ -12,6 +12,10 @@
 
 - The Route components rerenders and shows the new set of components
 
+2. BrowserRouter uses everything after the .com .net or port as the 'path' (Ex: https://somedomain.com/path)
+3. HashRouter uses everything after a # as the 'path'(Ex: https://somedomain.com/#/path)
+4. MemoryRouter doesn't use the URL to track navigation (Ex: https://somedomain.com/). There is no path displayed when you navigate to different links.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
