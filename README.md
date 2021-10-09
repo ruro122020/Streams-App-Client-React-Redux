@@ -20,11 +20,47 @@
 
 ## Create React App Dev Server
 
-1. If a path doesn't exist in your application the react app dev server will:
+If a path doesn't exist in your application the react app dev server will:
 
 - check the dev resources
 - check the public dir
   If there is no match to the path then it'll server up the index.html file instead of a 404 error.
+
+## Authentication
+
+### Traditional Email/Password Authentication
+
+1. We store a record in a database with the user's email and password
+2. When the user tires to login, we compare the email/password with whats stored in the database
+3. A user is "logged in" when they enter the correct email/password
+
+### OAth Authentication
+
+1. User authenticates with outside service provider (google, linkedIn, facebook)
+2. User authorizes our app to access their information
+3. Outside provider tells us about the user
+4. We are trusting the outside provider to correctly handle identification of a user
+5. OAuth can be used for
+
+- user identfication in our app
+- our app making actions on behalf of user.
+  Google has a list of scopes you can ask your user to give you access to.
+
+### OAuth for Servers
+
+1. After user logs in a token is received that a server can use to make requests on behalf of the user
+2. This approach is usually used when we have an app that needs to access user data **when they are not logged in**
+3. This process is difficult to setup because we need to store a lot of info about the user
+
+### OAuth for JS Browser Apps
+
+1. After user logs in a token is received that a browser app can use to make requests on behalf of the user
+2. This approach is usually used when we have an app that only needs to access user data **while they are logged in**
+3. This process is very easy to setup thanks to google's JS lib to automate flow
+
+### Authentication flow with google
+
+![Authentication flow with google](./assets/googleAuthFlow.png)
 
 # Getting Started with Create React App
 
