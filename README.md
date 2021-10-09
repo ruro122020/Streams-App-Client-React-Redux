@@ -13,8 +13,18 @@
 - The Route components rerenders and shows the new set of components
 
 2. BrowserRouter uses everything after the .com .net or port as the 'path' (Ex: https://somedomain.com/path)
-3. HashRouter uses everything after a # as the 'path'(Ex: https://somedomain.com/#/path)
+
+3. HashRouter uses everything after a # as the 'path' (Ex: https://somedomain.com/#/path)
+
 4. MemoryRouter doesn't use the URL to track navigation (Ex: https://somedomain.com/). There is no path displayed when you navigate to different links.
+
+## Create React App Dev Server
+
+1. If a path doesn't exist in your application the react app dev server will:
+
+- check the dev resources
+- check the public dir
+  If there is no match to the path then it'll server up the index.html file instead of a 404 error.
 
 # Getting Started with Create React App
 
