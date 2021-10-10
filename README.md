@@ -61,6 +61,33 @@ If a path doesn't exist in your application the react app dev server will:
 ### Authentication flow with google
 
 ![Authentication flow with google](./assets/googleAuthFlow.png)
+At the end you get a token and the profile info of the user
+
+When the user logs out another callback gets invoked that lets your application know that the user has logged out. So we must wire up the application to listen for that callback as well.
+
+### General steps to setup OAuth with google
+
+1. Creat a new project (here)[console.developers.google.com]
+2. Set up an OAuth client ID
+3. Generate an OAuth client ID
+4. install google's API library in your application and initialize it with the OAuth client ID
+   (google's API library can't be installed through npm so we are going to add `<script src='https://apis.google.com/js/api.js' ></script>` to the index.html file in the public folder)
+5. Make sure the lib gets called any time the user clicks on the 'Login with google' button
+
+_How google's API library works_
+
+1. After add the script google's API `gapi` is will be located in the windows object of the browser and it's a multi-purpose google api library
+
+- you can use to interact with the OAuth flow
+- you can also use it to work with all different types of google services
+
+2. To use google services with google's api library use `gapi.load('google's service')` to fetch additional javascript code and load it up into that library. In our case we want to use `gapi.load('client:auth2')` to get some additional javascript code and use it in this application
+
+3. After we load up the additional code we can then initialize it with the OAuth clientID like so:
+   `gapi.client.init({clientID: 'place clientId'})`
+   > See GoogleAuth.js for reference on how to this up
+
+> Gapi documentation can be found at https://developers.google.com/identity/sign-in/web/reference and the methods we use can be found under Authentication
 
 # Getting Started with Create React App
 
