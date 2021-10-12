@@ -89,6 +89,10 @@ _How google's API library works_
 
 > Gapi documentation can be found at https://developers.google.com/identity/sign-in/web/reference and the methods we use can be found under Authentication
 
+## Redux DevTools
+
+To debug use `http://localhost:3000/?debug_session=nameofdebuggingsession
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
