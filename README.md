@@ -93,6 +93,20 @@ _How google's API library works_
 
 To debug use `http://localhost:3000/?debug_session=nameofdebuggingsession
 
+## JSON Server
+
+(Documentation)[https://www.npmjs.com/package/json-server]
+
+1. REST conventions are a predefined system for defining different routes on an API that work with a given type of records. Example:
+
+| Syntax                  | Description | Route        |
+| ----------------------- | ----------- | ------------ |
+| List all records        | GET         | /streams     |
+| Get a particular record | GET         | /streams/:id |
+| Create record           | POST        | /streams     |
+| Update a record         | PUT         | /streams/:id |
+| Delete a record         | DELETE      | /streams/:id |
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
