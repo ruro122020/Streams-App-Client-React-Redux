@@ -99,13 +99,13 @@ To debug use `http://localhost:3000/?debug_session=nameofdebuggingsession
 
 1. REST conventions are a predefined system for defining different routes on an API that work with a given type of records. Example:
 
-| Syntax                  | Description | Route        |
-| ----------------------- | ----------- | ------------ |
-| List all records        | GET         | /streams     |
-| Get a particular record | GET         | /streams/:id |
-| Create record           | POST        | /streams     |
-| Update a record         | PUT         | /streams/:id |
-| Delete a record         | DELETE      | /streams/:id |
+| Syntax                  | Description | Route        | Response         |
+| ----------------------- | ----------- | ------------ | ---------------- |
+| List all records        | GET         | /streams     | Array of Records |
+| Get a particular record | GET         | /streams/:id | Single Record    |
+| Create record           | POST        | /streams     | Single Record    |
+| Update a record         | PUT         | /streams/:id | Single Record    |
+| Delete a record         | DELETE      | /streams/:id | Nothing          |
 
 # Getting Started with Create React App
 
