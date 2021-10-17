@@ -18,6 +18,11 @@
 
 4. MemoryRouter doesn't use the URL to track navigation (Ex: https://somedomain.com/). There is no path displayed when you navigate to different links.
 
+5. The Route component passes some props to the component you provide in the component prop. Some of the props it passes are the history, location, params, path, url, among others.
+
+6. With React-Router, each component NEEDS to be designed to work in isolation(fetch it own data).
+   You don't want to rely on the user first going to page A and then over to page b for data to load on page b. You want page b to load its own data.
+
 ## Create React App Dev Server
 
 If a path doesn't exist in your application the react app dev server will:
@@ -102,10 +107,27 @@ To debug use `http://localhost:3000/?debug_session=nameofdebuggingsession
 | Syntax                  | Description | Route        | Response         |
 | ----------------------- | ----------- | ------------ | ---------------- |
 | List all records        | GET         | /streams     | Array of Records |
-| Get a particular record | GET         | /streams/:id | Single Record    |
 | Create record           | POST        | /streams     | Single Record    |
+| Get a particular record | GET         | /streams/:id | Single Record    |
 | Update a record         | PUT         | /streams/:id | Single Record    |
 | Delete a record         | DELETE      | /streams/:id | Nothing          |
+
+## URL-Based Selection
+
+| Path                | Component    |
+| ------------------- | ------------ |
+| /                   | StreamList   |
+| /streams/new        | StreamCreate |
+| /streams/edit/:id   | StreamEdit   |
+| /streams/delete/:id | StreamDelete |
+| /streams/:id        | StreamShow   |
+
+2. When it comes to making changes to an object. Try to make sure that the object only contains properties that where meant to be changed. Try to keep out any other property that didn't changed its property
+
+## Server-Side Methods
+
+1. The put method updates the data with the data you provided it. So if you have and object with mulitple properties and you send back an updated object with some of those properties in them, the object will be replaced witht the new object and the old object properties will be lost.
+2. The patch method updates the data with only the properties you sent to it without losing the other properties
 
 # Getting Started with Create React App
 
