@@ -129,6 +129,10 @@ To debug use `http://localhost:3000/?debug_session=nameofdebuggingsession
 1. The put method updates the data with the data you provided it. So if you have and object with mulitple properties and you send back an updated object with some of those properties in them, the object will be replaced witht the new object and the old object properties will be lost.
 2. The patch method updates the data with only the properties you sent to it without losing the other properties
 
+## Portal
+
+A portal allows us to render some element not as a direct child. Instead we can render that element/component as a child of some other element inside the our html structure. Most commonly the body. A portal allows us to get around the rules of stacking context or trying to show a modal or CSS issues.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
