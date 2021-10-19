@@ -1,14 +1,8 @@
-import React, { Component } from "react";
-//Field is a react input component. reduxForm is a function.
-import { Field, reduxForm } from "redux-form";
+import React from "react";
+import { Form, Field } from "react-final-form";
 
-/*
-Important Note: The Field component has a 'name' property. 
-Using the value of the name property will give you access to the inputs values and info. 
-*/
-
-class StreamForm extends Component {
-  renderError({ error, touched }) {
+const StreamForm = (props) => {
+  const renderError = ({ error, touched }) => {
     if (touched && error) {
       return (
         <div className="ui error message">
@@ -16,58 +10,53 @@ class StreamForm extends Component {
         </div>
       );
     }
-  }
-  renderInput = ({ input, label, meta }) => {
+  };
+
+  const renderInput = ({ input, label, meta }) => {
     const className = `field ${meta.error && meta.touched ? "error" : ""}`;
-    //{...input} this syntax taks all the key/value pairs from the input object
-    // and passed them as props to the input
     return (
       <div className={className}>
         <label>{label}</label>
-        <input {...input} />
-        {this.renderError(meta)}
+        <input {...input} autoComplete="off" />
+        {renderError(meta)}
       </div>
     );
   };
-  onSubmit = (formValues) => {
-    this.props.onSubmit(formValues);
+
+  const onSubmit = (formValues) => {
+    props.onSubmit(formValues);
   };
-  render() {
-    return (
-      <form
-        //call handleSubmit from the redux-form library
-        onSubmit={this.props.handleSubmit(this.onSubmit)}
-        className="ui form error"
-      >
-        <Field name="title" component={this.renderInput} label="Enter Title" />
-        <Field
-          name="description"
-          component={this.renderInput}
-          label="Enter Description"
-        ></Field>
-        <button className="ui button primary">Submit</button>
-      </form>
-    );
-  }
-}
 
-//to use validate in the form pass it in to the reduxForm function below
-const validate = (formValues) => {
-  const errors = {};
+  return (
+    <Form
+      initialValues={props.initialValues}
+      onSubmit={onSubmit}
+      validate={(formValues) => {
+        const errors = {};
 
-  if (!formValues.title) {
-    errors.title = "You must enter a title";
-  }
+        if (!formValues.title) {
+          errors.title = "You must enter a title";
+        }
 
-  if (!formValues.description) {
-    errors.description = "You must enter a description";
-  }
+        if (!formValues.description) {
+          errors.description = "You must enter a description";
+        }
 
-  return errors;
+        return errors;
+      }}
+      render={({ handleSubmit }) => (
+        <form onSubmit={handleSubmit} className="ui form error">
+          <Field name="title" component={renderInput} label="Enter Title" />
+          <Field
+            name="description"
+            component={renderInput}
+            label="Enter Description"
+          />
+          <button className="ui button primary">Submit</button>
+        </form>
+      )}
+    />
+  );
 };
 
-export default reduxForm({
-  //The name you want to give to this form
-  form: "streamForm",
-  validate: validate,
-})(StreamForm);
+export default StreamForm;
